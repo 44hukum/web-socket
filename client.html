@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      var client = new WebSocket("ws://localhost:8989");
+      /* on connection send message */
+      client.onopen = ()=>{
+          var message= JSON.stringify({"A":"hello world","b":"a"});
+        client.send(message);
+      };
+      
+      client.onmessage =function (message) {
+
+        console.log(message.data);
+      };
+    </script>
+  </body>
+</html>
